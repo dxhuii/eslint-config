@@ -7,19 +7,19 @@ export const react: FlatESLintConfigItem[] = [
   {
     files: [GLOB_TSX, GLOB_JS, GLOB_JSX, GLOB_TS],
     plugins: {
-      react: pluginReact,
-      "react-hooks": pluginReactHooks,
+      'react': pluginReact,
+      'react-hooks': pluginReactHooks,
     },
     settings: {
       react: {
-        version: "detect",
+        version: 'detect',
       },
     },
     rules: {
-      "jsx-quotes": ["error", "prefer-double"],
+      'jsx-quotes': ['error', 'prefer-double'],
 
       ...pluginReact.configs.recommended.rules,
-      "react/react-in-jsx-scope": OFF,
+      'react/react-in-jsx-scope': OFF,
 
       ...pluginReactHooks.configs.recommended.rules,
     },

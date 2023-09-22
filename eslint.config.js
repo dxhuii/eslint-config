@@ -1,8 +1,8 @@
 import stylisticMigrate from '@stylistic/eslint-plugin-migrate'
 import sortKeys from 'eslint-plugin-sort-keys'
-import antfu from '@antfu/eslint-config'
+import dxhuii from '@dxhuii/eslint-config'
 
-export default antfu(
+export default dxhuii(
   undefined,
   {
     ignores: [

@@ -11,6 +11,7 @@ import {
   jsonc,
   markdown,
   node,
+  react,
   sortPackageJson,
   sortTsconfig,
   test,
@@ -20,7 +21,6 @@ import {
   unicorn,
   vue,
   yml,
-  react,
 } from './configs'
 import type { OptionsConfig } from './types'
 import { combine } from './utils'
@@ -28,7 +28,7 @@ import { combine } from './utils'
 /**
  * Construct an array of ESLint flat config items.
  */
-export function antfu(options: OptionsConfig = {}, ...userConfigs: (FlatESLintConfigItem | FlatESLintConfigItem[])[]) {
+export function dxhuii(options: OptionsConfig = {}, ...userConfigs: (FlatESLintConfigItem | FlatESLintConfigItem[])[]) {
   const isInEditor = options.isInEditor ?? !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE) && !process.env.CI)
   const enableVue = options.vue ?? (isPackageExists('vue') || isPackageExists('nuxt') || isPackageExists('vitepress') || isPackageExists('@slidev/cli'))
   const enableTypeScript = options.typescript ?? (isPackageExists('typescript'))
@@ -83,7 +83,7 @@ export function antfu(options: OptionsConfig = {}, ...userConfigs: (FlatESLintCo
   if (options.yaml ?? true)
     configs.push(yml)
 
-    if (options.react ?? true)
+  if (options.react ?? true)
     configs.push(react)
 
   if (options.markdown ?? true)

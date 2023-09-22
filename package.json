@@ -56,8 +56,8 @@
     "yaml-eslint-parser": "^1.2.2"
   },
   "devDependencies": {
-    "@dxhuii/eslint-config": "workspace:*",
     "@antfu/ni": "^0.21.8",
+    "@dxhuii/eslint-config": "workspace:*",
     "@stylistic/eslint-plugin-migrate": "0.0.4",
     "@types/fs-extra": "^11.0.2",
     "@types/node": "^20.6.3",

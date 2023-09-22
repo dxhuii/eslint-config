@@ -43,6 +43,8 @@
     "eslint-plugin-markdown": "^3.0.1",
     "eslint-plugin-n": "^16.1.0",
     "eslint-plugin-no-only-tests": "^3.1.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-unicorn": "^48.0.1",
     "eslint-plugin-unused-imports": "^3.0.0",
     "eslint-plugin-vue": "^9.17.0",
@@ -54,7 +56,7 @@
     "yaml-eslint-parser": "^1.2.2"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "workspace:*",
+    "@dxhuii/eslint-config": "workspace:*",
     "@antfu/ni": "^0.21.8",
     "@stylistic/eslint-plugin-migrate": "0.0.4",
     "@types/fs-extra": "^11.0.2",

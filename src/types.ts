@@ -60,6 +60,13 @@ export interface OptionsConfig {
   yaml?: boolean
 
   /**
+   * Enable React support.
+   *
+   * @default true
+   */
+  react?: boolean
+
+  /**
    * Enable Markdown support.
    *
    * @default true

@@ -20,6 +20,7 @@ import {
   unicorn,
   vue,
   yml,
+  react,
 } from './configs'
 import type { OptionsConfig } from './types'
 import { combine } from './utils'
@@ -81,6 +82,9 @@ export function antfu(options: OptionsConfig = {}, ...userConfigs: (FlatESLintCo
 
   if (options.yaml ?? true)
     configs.push(yml)
+
+    if (options.react ?? true)
+    configs.push(react)
 
   if (options.markdown ?? true)
     configs.push(markdown({ componentExts }))

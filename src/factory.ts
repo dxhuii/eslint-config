@@ -46,7 +46,6 @@ export function dxhuii(options: OptionsConfig & FlatESLintConfigItem = {}, ...us
         // Plugin: eslint-plugin-import
         'import/prefer-default-export': OFF,
         'import/extensions': OFF,
-        '@typescript-eslint/consistent-type-imports': 'error',
 
         'no-console': OFF,
       },

@@ -14,6 +14,16 @@ export const react: FlatESLintConfigItem[] = [
         version: 'detect'
       }
     },
+    languageOptions: {
+      parserOptions: {
+        ecmaVersion: 'latest',
+        parser: '@typescript-eslint/parser',
+        sourceType: 'module',
+        ecmaFeatures: {
+          jsx: true
+        }
+      }
+    },
     rules: {
       'jsx-quotes': ['error', 'prefer-double'], // jsx 属性值使用双引号
 
@@ -45,7 +55,9 @@ export const react: FlatESLintConfigItem[] = [
       'react/jsx-tag-spacing': 'error',
       'react/self-closing-comp': 'error',
       'react/no-unescaped-entities': 'error',
-      'react/no-invalid-html-attribute': 'error'
+      'react/no-invalid-html-attribute': 'error',
+      'react/jsx-uses-react': 'error',
+      'react/jsx-uses-vars': 'error'
     }
   }
 ]

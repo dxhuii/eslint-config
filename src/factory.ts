@@ -44,7 +44,18 @@ export function dxhuii(options: OptionsConfig & FlatESLintConfigItem = {}, ...us
         'no-console': OFF, // 允许使用 console
 
         // 删除未尾逗号
-        'style/comma-dangle': ['error', 'never']
+        'style/comma-dangle': ['error', 'never'],
+        // 删除未使用的依赖
+        'unused-imports/no-unused-imports': 'error',
+        'unused-imports/no-unused-vars': [
+          'warn',
+          {
+            vars: 'all',
+            varsIgnorePattern: '^_',
+            args: 'after-used',
+            argsIgnorePattern: '^_'
+          }
+        ]
       }
     }
   )

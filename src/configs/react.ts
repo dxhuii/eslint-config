@@ -14,20 +14,12 @@ export const react: FlatESLintConfigItem[] = [
         version: 'detect'
       }
     },
-    languageOptions: {
-      parserOptions: {
-        ecmaVersion: 'latest',
-        parser: '@typescript-eslint/parser',
-        sourceType: 'module',
-        ecmaFeatures: {
-          jsx: true
-        }
-      }
-    },
     rules: {
-      'jsx-quotes': ['error', 'prefer-double'], // jsx 属性值使用双引号
+      'jsx-quotes': ['error', 'prefer-double'],
 
       ...pluginReact.configs.recommended.rules,
+      'react/react-in-jsx-scope': 'off',
+
       ...pluginReactHooks.configs.recommended.rules,
 
       // JSX rules https://www.5axxw.com/wiki/content/0u8zli
@@ -55,9 +47,7 @@ export const react: FlatESLintConfigItem[] = [
       'react/jsx-tag-spacing': 'error',
       'react/self-closing-comp': 'error',
       'react/no-unescaped-entities': 'error',
-      'react/no-invalid-html-attribute': 'error',
-      'react/jsx-uses-react': 'error',
-      'react/jsx-uses-vars': 'error'
+      'react/no-invalid-html-attribute': 'error'
     }
   }
 ]

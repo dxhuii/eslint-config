@@ -1,7 +1,7 @@
 {
   "name": "@dxhuii/eslint-config",
   "type": "module",
-  "version": "0.0.1-beta.8",
+  "version": "0.0.1-beta.7",
   "packageManager": "pnpm@8.8.0",
   "description": "Dxhuii's ESLint config",
   "author": "Dxhuii <dxhuii@hotmail.com> (https://github.com/dxhuii)",
@@ -28,6 +28,7 @@
     "eslint": ">=8.0.0"
   },
   "dependencies": {
+    "@typescript-eslint/parser": "^6.7.4",
     "eslint-define-config": "^1.23.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0"

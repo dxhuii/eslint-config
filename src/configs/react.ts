@@ -10,11 +10,6 @@ export const react: FlatESLintConfigItem[] = [
       'react': pluginReact,
       'react-hooks': pluginReactHooks,
     },
-    settings: {
-      react: {
-        version: 'detect',
-      },
-    },
     rules: {
       'jsx-quotes': ['error', 'prefer-double'],
 

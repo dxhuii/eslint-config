@@ -9,14 +9,13 @@ export const react: FlatESLintConfigItem[] = [
       'react': pluginReact,
       'react-hooks': pluginReactHooks
     },
+    ignores: ['./apps/web/**/*', './apps/api/**/*'],
     settings: {
       react: {
         version: 'detect'
       }
     },
     rules: {
-      'jsx-quotes': ['error', 'prefer-double'],
-
       ...pluginReact.configs.recommended.rules,
       'react/react-in-jsx-scope': 'off',
 

@@ -25,32 +25,28 @@ export function dxhuii(options: OptionsConfig & FlatESLintConfigItem = {}, ...us
         'vue/multi-word-component-names': OFF, // 组件名不允许使用连字符
         'vue/custom-event-name-casing': ['error', 'camelCase', { // 事件名不允许使用连字符
           ignores: [
-            '/^(click):[a-z]+[a-zA-Z]+$/',
-          ],
-        }],
-      },
+            '/^(click):[a-z]+[a-zA-Z]+$/'
+          ]
+        }]
+      }
     },
     {
-    // 所有文件
+      // 所有文件
       rules: {
-        'style/semi': ['error', 'never'], // 语句不加分号
-        'style/comma-dangle': OFF, // 对象最后一个属性不加逗号
-        // add parens ony when required in arrow function
-        'arrow-parens': ['error', 'as-needed'], // 箭头函数参数只有一个时不加括号
-
-        // Allow multi line string
         'no-multi-str': OFF, // 允许多行字符串
         'no-restricted-globals': OFF, // 允许使用全局变量
         'antfu/no-cjs-exports': OFF, // 允许使用 commonjs 的 exports
         'n/prefer-global/process': OFF, // 允许使用 process
 
-        // Plugin: eslint-plugin-import
         'import/prefer-default-export': OFF, // 允许使用 export
         'import/extensions': OFF, // 允许不写文件后缀
 
         'no-console': OFF, // 允许使用 console
-      },
-    },
+
+        // 删除未尾逗号
+        'style/comma-dangle': ['error', 'never']
+      }
+    }
   )
 
   return merged

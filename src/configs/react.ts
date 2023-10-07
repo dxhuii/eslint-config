@@ -1,6 +1,5 @@
 import { GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX } from '../globs'
 import { pluginReact, pluginReactHooks } from '../plugins'
-import { OFF } from '../flags'
 import type { FlatESLintConfigItem } from '../types'
 
 export const react: FlatESLintConfigItem[] = [
@@ -8,12 +7,12 @@ export const react: FlatESLintConfigItem[] = [
     files: [GLOB_TSX, GLOB_JS, GLOB_JSX, GLOB_TS],
     plugins: {
       'react': pluginReact,
-      'react-hooks': pluginReactHooks,
+      'react-hooks': pluginReactHooks
     },
     settings: {
       react: {
-        version: 'detect',
-      },
+        version: 'detect'
+      }
     },
     rules: {
       'jsx-quotes': ['error', 'prefer-double'], // jsx 属性值使用双引号
@@ -46,7 +45,7 @@ export const react: FlatESLintConfigItem[] = [
       'react/jsx-tag-spacing': 'error',
       'react/self-closing-comp': 'error',
       'react/no-unescaped-entities': 'error',
-      'react/no-invalid-html-attribute': 'error',
-    },
-  },
+      'react/no-invalid-html-attribute': 'error'
+    }
+  }
 ]

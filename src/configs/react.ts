@@ -1,15 +1,14 @@
-import { GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX } from '../globs'
+import { GLOB_JSX, GLOB_TSX } from '../globs'
 import { pluginReact, pluginReactHooks } from '../plugins'
 import type { FlatESLintConfigItem } from '../types'
 
 export const react: FlatESLintConfigItem[] = [
   {
-    files: [GLOB_TSX, GLOB_JS, GLOB_JSX, GLOB_TS],
+    files: [GLOB_TSX, GLOB_JSX],
     plugins: {
       'react': pluginReact,
       'react-hooks': pluginReactHooks
     },
-    ignores: ['./apps/web/**/*', './apps/api/**/*'],
     settings: {
       react: {
         version: 'detect'

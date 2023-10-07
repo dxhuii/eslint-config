@@ -38,6 +38,8 @@ export function dxhuii(options: OptionsConfig & FlatESLintConfigItem = {}, ...us
         'antfu/no-cjs-exports': OFF, // 允许使用 commonjs 的 exports
         'node/prefer-global/process': OFF, // 允许使用 process
 
+        'antfu/consistent-list-newline': OFF, // 允许在数组元素之间换行
+
         'arrow-parens': ['error', 'as-needed'], // 箭头函数参数只有一个时不需要括号
 
         'import/prefer-default-export': OFF, // 允许使用 export
@@ -47,6 +49,8 @@ export function dxhuii(options: OptionsConfig & FlatESLintConfigItem = {}, ...us
 
         // 删除未尾逗号
         'style/comma-dangle': ['error', 'never'],
+        'jsonc/comma-dangle': ['error', 'never'],
+
         'style/jsx-quotes': ['error', 'prefer-single'], // jsx 使用单引号
         // 删除未使用的依赖
         'unused-imports/no-unused-imports': 'error',

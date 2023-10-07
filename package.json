@@ -2,9 +2,9 @@
   "name": "@dxhuii/eslint-config",
   "type": "module",
   "version": "0.0.1-beta.6",
-  "packageManager": "pnpm@8.7.6",
+  "packageManager": "pnpm@8.8.0",
   "description": "Dxhuii's ESLint config",
-  "author": "Dxhuii <dxhuii@hotmail.com> (https://github.com/dxhuii/)",
+  "author": "Dxhuii <dxhuii@hotmail.com> (https://github.com/dxhuii)",
   "license": "MIT",
   "homepage": "https://github.com/dxhuii/eslint-config",
   "keywords": [
@@ -15,7 +15,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm --clean --dts",
+    "build": "tsup src/index.ts --format esm,cjs --clean --dts",
     "stub": "tsup src/index.ts --format esm --clean",
     "lint": "pnpm run stub && eslint .",
     "prepublishOnly": "nr build",
@@ -28,52 +28,23 @@
     "eslint": ">=8.0.0"
   },
   "dependencies": {
-    "@eslint-stylistic/metadata": "0.0.4",
-    "@eslint/js": "^8.49.0",
-    "@stylistic/eslint-plugin-js": "0.0.4",
-    "@stylistic/eslint-plugin-ts": "0.0.4",
-    "@typescript-eslint/eslint-plugin": "^6.7.2",
-    "@typescript-eslint/parser": "^6.7.2",
     "eslint-define-config": "^1.23.0",
-    "eslint-plugin-antfu": "^1.0.0-beta.3",
-    "eslint-plugin-eslint-comments": "^3.2.0",
-    "eslint-plugin-i": "^2.28.1",
-    "eslint-plugin-jsdoc": "^46.8.2",
-    "eslint-plugin-jsonc": "^2.9.0",
-    "eslint-plugin-markdown": "^3.0.1",
-    "eslint-plugin-n": "^16.1.0",
-    "eslint-plugin-no-only-tests": "^3.1.0",
     "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-unicorn": "^48.0.1",
-    "eslint-plugin-unused-imports": "^3.0.0",
-    "eslint-plugin-vue": "^9.17.0",
-    "eslint-plugin-yml": "^1.9.0",
-    "globals": "^13.22.0",
-    "jsonc-eslint-parser": "^2.3.0",
-    "local-pkg": "^0.4.3",
-    "vue-eslint-parser": "^9.3.1",
-    "yaml-eslint-parser": "^1.2.2"
+    "eslint-plugin-react-hooks": "^4.6.0"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^1.0.0-beta.21",
     "@antfu/ni": "^0.21.8",
     "@dxhuii/eslint-config": "workspace:*",
-    "@stylistic/eslint-plugin-migrate": "0.0.4",
-    "@types/fs-extra": "^11.0.2",
+    "@types/eslint": "^8.44.3",
     "@types/node": "^20.6.3",
     "bumpp": "^9.2.0",
     "eslint": "^8.49.0",
-    "eslint-plugin-sort-keys": "^2.3.5",
     "esno": "^0.17.0",
-    "fast-glob": "^3.3.1",
-    "fs-extra": "^11.1.1",
     "lint-staged": "^14.0.1",
     "rimraf": "^5.0.1",
     "simple-git-hooks": "^2.9.0",
-    "sucrase": "^3.34.0",
     "tsup": "^7.2.0",
-    "typescript": "^5.2.2",
-    "unbuild": "^2.0.0",
-    "vitest": "^0.34.5"
+    "typescript": "^5.2.2"
   }
 }

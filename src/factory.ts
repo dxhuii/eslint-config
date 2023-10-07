@@ -1,96 +1,57 @@
-import process from 'node:process'
-import type { FlatESLintConfigItem } from 'eslint-define-config'
-import { isPackageExists } from 'local-pkg'
-import {
-  comments,
-  ignores,
-  imports,
-  javascript,
-  javascriptStylistic,
-  jsdoc,
-  jsonc,
-  markdown,
-  node,
-  react,
-  sortPackageJson,
-  sortTsconfig,
-  test,
-  typescript,
-  typescriptStylistic,
-  typescriptWithLanguageServer,
-  unicorn,
-  vue,
-  yml,
-} from './configs'
-import type { OptionsConfig } from './types'
+import { react } from './configs'
 import { combine } from './utils'
+import type { FlatESLintConfigItem, OptionsConfig } from './types'
+import { OFF } from './flags'
 
 /**
  * Construct an array of ESLint flat config items.
  */
-export function dxhuii(options: OptionsConfig = {}, ...userConfigs: (FlatESLintConfigItem | FlatESLintConfigItem[])[]) {
-  const isInEditor = options.isInEditor ?? !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE) && !process.env.CI)
-  const enableVue = options.vue ?? (isPackageExists('vue') || isPackageExists('nuxt') || isPackageExists('vitepress') || isPackageExists('@slidev/cli'))
-  const enableTypeScript = options.typescript ?? (isPackageExists('typescript'))
-  const enableStylistic = options.stylistic ?? true
-
-  const configs = [
-    ignores,
-    javascript({ isInEditor }),
-    comments,
-    node,
-    jsdoc,
-    imports,
-    unicorn,
-  ]
-
-  // In the future we may support more component extensions like Svelte or so
-  const componentExts: string[] = []
-  if (enableVue)
-    componentExts.push('vue')
-
-  if (enableStylistic)
-    configs.push(javascriptStylistic)
-
-  if (enableTypeScript) {
-    configs.push(typescript({ componentExts }))
-
-    if (typeof enableTypeScript !== 'boolean') {
-      configs.push(typescriptWithLanguageServer({
-        ...enableTypeScript,
-        componentExts,
-      }))
-    }
-
-    if (enableStylistic)
-      configs.push(typescriptStylistic)
-  }
-
-  if (options.test ?? true)
-    configs.push(test({ isInEditor }))
-
-  if (enableVue)
-    configs.push(vue({ typescript: !!enableTypeScript }))
-
-  if (options.jsonc ?? true) {
-    configs.push(
-      jsonc,
-      sortPackageJson,
-      sortTsconfig,
-    )
-  }
-
-  if (options.yaml ?? true)
-    configs.push(yml)
+export function dxhuii(options: OptionsConfig & FlatESLintConfigItem = {}, ...userConfigs: (FlatESLintConfigItem | FlatESLintConfigItem[])[]) {
+  const configs: FlatESLintConfigItem[][] = []
 
   if (options.react ?? true)
     configs.push(react)
 
-  if (options.markdown ?? true)
-    configs.push(markdown({ componentExts }))
-
-  return combine(
+  const merged = combine(
     ...configs,
     ...userConfigs,
+    {
+      // Remember to specify the file glob here, otherwise it might cause the vue plugin to handle non-vue files
+      files: ['**/*.vue'],
+      rules: {
+        'vue/v-on-event-hyphenation': ['error', 'never'],
+        'vue/valid-attribute-name': OFF,
+        // 关闭组件命名规则
+        'vue/multi-word-component-names': OFF,
+        'vue/custom-event-name-casing': ['error', 'camelCase', {
+          ignores: [
+            '/^(click):[a-z]+[a-zA-Z]+$/',
+          ],
+        }],
+      },
+    },
+    {
+    // Without `files`, they are general rules for all files
+      rules: {
+        'style/semi': ['error', 'never'],
+        // add parens ony when required in arrow function
+        'arrow-parens': ['error', 'as-needed'],
+
+        // Allow multi line string
+        'no-multi-str': OFF,
+        'no-restricted-globals': OFF,
+        'antfu/no-cjs-exports': OFF,
+        'n/prefer-global/process': OFF,
+
+        // Plugin: eslint-plugin-import
+        'import/prefer-default-export': OFF,
+        'import/extensions': OFF,
+        '@typescript-eslint/consistent-type-imports': 'error',
+
+        'no-console': OFF,
+      },
+    },
   )
+
+  return merged
 }

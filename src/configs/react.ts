@@ -10,19 +10,21 @@ export const react: FlatESLintConfigItem[] = [
       'react': pluginReact,
       'react-hooks': pluginReactHooks,
     },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
     rules: {
-      'jsx-quotes': ['error', 'prefer-double'],
+      'jsx-quotes': ['error', 'prefer-double'], // jsx 属性值使用双引号
 
       ...pluginReact.configs.recommended.rules,
-      'react/react-in-jsx-scope': OFF,
-
       ...pluginReactHooks.configs.recommended.rules,
 
       // JSX rules https://www.5axxw.com/wiki/content/0u8zli
       'react/jsx-boolean-value': ['error', 'never'],
       'react/jsx-child-element-spacing': 'error',
       'react/jsx-closing-bracket-location': ['error', 'after-props'],
-
       'react/jsx-closing-tag-location': 'error',
       'react/jsx-curly-brace-presence': 'error',
       'react/jsx-curly-newline': 'error',
@@ -38,7 +40,6 @@ export const react: FlatESLintConfigItem[] = [
       'react/jsx-no-leaked-render': 'error',
       'react/jsx-no-target-blank': 'error',
       'react/jsx-no-useless-fragment': 'error',
-      // 'react/jsx-one-expression-per-line': 'error',
       'react/jsx-pascal-case': 'error',
       'react/jsx-props-no-multi-spaces': 'error',
       'react/jsx-sort-props': 'error',

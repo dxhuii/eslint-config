@@ -1,10 +1,20 @@
 import { GLOB_JSX, GLOB_TSX } from '../globs'
 import { pluginReact, pluginReactHooks } from '../plugins'
-import type { FlatESLintConfigItem } from '../types'
+import type { ConfigItem } from '../types'
 
-export const react: FlatESLintConfigItem[] = [
+export const react: ConfigItem[] = [
   {
     files: [GLOB_TSX, GLOB_JSX],
+    languageOptions: {
+      parserOptions: {
+        ecmaVersion: 'latest',
+        parser: '@typescript-eslint/parser',
+        sourceType: 'module',
+        ecmaFeatures: {
+          jsx: true
+        }
+      }
+    },
     plugins: {
       'react': pluginReact,
       'react-hooks': pluginReactHooks

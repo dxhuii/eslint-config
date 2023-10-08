@@ -1,13 +1,13 @@
 import { react } from './configs'
 import { combine } from './utils'
-import type { FlatESLintConfigItem, OptionsConfig } from './types'
+import type { ConfigItem, OptionsConfig } from './types'
 import { OFF } from './flags'
 
 /**
  * Construct an array of ESLint flat config items.
  */
-export function dxhuii(options: OptionsConfig & FlatESLintConfigItem = {}, ...userConfigs: (FlatESLintConfigItem | FlatESLintConfigItem[])[]) {
-  const configs: FlatESLintConfigItem[][] = []
+export function dxhuii(options: OptionsConfig & ConfigItem = {}, ...userConfigs: (ConfigItem | ConfigItem[])[]) {
+  const configs: ConfigItem[][] = []
 
   if (options.react ?? true)
     configs.push(react)

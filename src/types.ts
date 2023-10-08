@@ -1,72 +1,60 @@
 import type { FlatGitignoreOptions } from 'eslint-config-flat-gitignore'
-import type { ParserOptions } from '@typescript-eslint/parser'
-import type { ESLint, Linter } from 'eslint'
-import type { LanguageOptions, LinterOptions } from 'eslint-define-config'
+import type {
+  EslintCommentsRules,
+  EslintRules,
+  FlatESLintConfigItem,
+  ImportRules,
+  JsoncRules,
+  MergeIntersection,
+  NRules,
+  Prefix,
+  RenamePrefix,
+  RuleConfig,
+  TypeScriptRules,
+  UnicornRules,
+  Unprefix,
+  VitestRules,
+  VueRules,
+  YmlRules
+} from '@antfu/eslint-define-config'
 
-/**
- * Flat ESLint Configuration.
- *
- * @see [Configuration Files (New)](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new)
- */
-export interface FlatESLintConfigItem {
+type MergedRules = MergeIntersection<
+  EslintRules &
+  Unprefix<TypeScriptRules, '@typescript-eslint/'>
+>
+
+export type StylisticRules = Pick<MergedRules, 'array-bracket-newline' | 'array-bracket-spacing' | 'array-element-newline' | 'arrow-spacing' | 'block-spacing' | 'brace-style' | 'comma-dangle' | 'comma-spacing' | 'comma-style' | 'computed-property-spacing' | 'dot-location' | 'eol-last' | 'func-call-spacing' | 'function-call-argument-newline' | 'function-paren-newline' | 'generator-star-spacing' | 'implicit-arrow-linebreak' | 'indent' | 'jsx-quotes' | 'key-spacing' | 'keyword-spacing' | 'linebreak-style' | 'lines-around-comment' | 'lines-around-directive' | 'lines-between-class-members' | 'max-len' | 'max-statements-per-line' | 'multiline-ternary' | 'new-parens' | 'newline-after-var' | 'newline-before-return' | 'newline-per-chained-call' | 'no-confusing-arrow' | 'no-extra-parens' | 'no-extra-semi' | 'no-floating-decimal' | 'no-mixed-operators' | 'no-mixed-spaces-and-tabs' | 'no-multi-spaces' | 'no-multiple-empty-lines' | 'no-spaced-func' | 'no-tabs' | 'no-trailing-spaces' | 'no-whitespace-before-property' | 'nonblock-statement-body-position' | 'object-curly-newline' | 'object-curly-spacing' | 'object-property-newline' | 'one-var-declaration-per-line' | 'operator-linebreak' | 'padded-blocks' | 'padding-line-between-statements' | 'quote-props' | 'quotes' | 'rest-spread-spacing' | 'semi' | 'semi-spacing' | 'semi-style' | 'space-before-blocks' | 'space-before-function-paren' | 'space-in-parens' | 'space-infix-ops' | 'space-unary-ops' | 'spaced-comment' | 'switch-colon-spacing' | 'template-curly-spacing' | 'template-tag-spacing' | 'wrap-iife' | 'wrap-regex' | 'yield-star-spacing' | 'member-delimiter-style' | 'type-annotation-spacing'>
+
+export type Rules = MergeIntersection<
+  RenamePrefix<TypeScriptRules, '@typescript-eslint/', 'ts/'> &
+  RenamePrefix<VitestRules, 'vitest/', 'test/'> &
+  RenamePrefix<YmlRules, 'yml/', 'yaml/'> &
+  RenamePrefix<NRules, 'n/', 'node/'> &
+  Prefix<StylisticRules, 'style/'> &
+  ImportRules &
+  EslintRules &
+  JsoncRules &
+  VueRules &
+  UnicornRules &
+  EslintCommentsRules &
+  {
+    'test/no-only-tests': RuleConfig<[]>
+  }
+>
+
+export type ConfigItem = Omit<FlatESLintConfigItem<Rules, false>, 'plugins'> & {
   /**
-   * The name of the configuration object.
+   * Custom name of each config item
    */
   name?: string
 
-  /**
-   * An array of glob patterns indicating the files that the configuration object should apply to. If not specified, the configuration object applies to all files.
-   *
-   * @see [Ignore Patterns](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new#excluding-files-with-ignores)
-   */
-  files?: string[]
-
-  /**
-   * An array of glob patterns indicating the files that the configuration object should not apply to. If not specified, the configuration object applies to all files matched by files.
-   *
-   * @see [Ignore Patterns](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new#excluding-files-with-ignores)
-   */
-  ignores?: string[]
-
-  /**
-   * An object containing settings related to how JavaScript is configured for linting.
-   *
-   * @see [Configuring language options](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new#configuring-language-options)
-   */
-  languageOptions?: LanguageOptions
-
-  /**
-   * An object containing settings related to the linting process.
-   */
-  linterOptions?: LinterOptions
-
-  /**
-   * Either an object containing `preprocess()` and `postprocess()` methods or a string indicating the name of a processor inside of a plugin (i.e., `"pluginName/processorName"`).
-   *
-   * @see [Using processors](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new#using-processors)
-   */
-  processor?: string | Linter.Processor
-
+  // Relax plugins type limitation, as most of the plugins did not have correct type info yet.
   /**
    * An object containing a name-value mapping of plugin names to plugin objects. When `files` is specified, these plugins are only available to the matching files.
    *
    * @see [Using plugins in your configuration](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new#using-plugins-in-your-configuration)
    */
-  plugins?: Record<string, ESLint.Plugin>
-
-  /**
-   * An object containing the configured rules. When `files` or `ignores` are specified, these rule configurations are only available to the matching files.
-   *
-   * @see [Configuring rules](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new#configuring-rules)
-   */
-  rules?: Record<string, Linter.RuleLevel | Linter.RuleLevelAndOptions>
-
-  /**
-   * An object containing name-value pairs of information that should be available to all rules.
-   *
-   * @see [Configuring shared settings](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new#configuring-shared-settings)
-   */
-  settings?: Record<string, any>
+  plugins?: Record<string, any>
 }
 
 export interface OptionsComponentExts {
@@ -79,13 +67,6 @@ export interface OptionsComponentExts {
   componentExts?: string[]
 }
 
-export interface OptionsTypeScriptParserOptions {
-  /**
-   * Additional parser options for TypeScript.
-   */
-  parserOptions?: Partial<ParserOptions>
-}
-
 export interface OptionsTypeScriptWithTypes {
   /**
    * When this options is provided, type aware rules will be enabled.
@@ -94,25 +75,9 @@ export interface OptionsTypeScriptWithTypes {
   tsconfigPath?: string
 }
 
-export interface OptionsHasTypeScript {
-  typescript?: boolean
-}
-
-export interface OptionsStylistic {
-  stylistic?: boolean | StylisticConfig
-}
-
 export interface StylisticConfig {
   indent?: number | 'tab'
   quotes?: 'single' | 'double'
-}
-
-export interface OptionsOverrides {
-  overrides?: FlatESLintConfigItem['rules']
-}
-
-export interface OptionsIsInEditor {
-  isInEditor?: boolean
 }
 
 export interface OptionsConfig extends OptionsComponentExts {
@@ -189,12 +154,12 @@ export interface OptionsConfig extends OptionsComponentExts {
    * Provide overrides for rules for each integration.
    */
   overrides?: {
-    javascript?: FlatESLintConfigItem['rules']
-    typescript?: FlatESLintConfigItem['rules']
-    test?: FlatESLintConfigItem['rules']
-    vue?: FlatESLintConfigItem['rules']
-    jsonc?: FlatESLintConfigItem['rules']
-    markdown?: FlatESLintConfigItem['rules']
-    yaml?: FlatESLintConfigItem['rules']
+    javascript?: ConfigItem['rules']
+    typescript?: ConfigItem['rules']
+    test?: ConfigItem['rules']
+    vue?: ConfigItem['rules']
+    jsonc?: ConfigItem['rules']
+    markdown?: ConfigItem['rules']
+    yaml?: ConfigItem['rules']
   }
 }

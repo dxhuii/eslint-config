@@ -23,4 +23,3 @@
 
 ## 感谢
 - [@antfu/eslint-config](https://github.com/antfu/eslint-config)
-- [@antfu/eslint-define-config](https://github.com/antfu/eslint-define-config)

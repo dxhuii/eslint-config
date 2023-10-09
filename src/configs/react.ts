@@ -1,6 +1,6 @@
+import type { ConfigItem } from '@antfu/eslint-config'
 import { GLOB_JSX, GLOB_TSX } from '../globs'
 import { pluginReact, pluginReactHooks } from '../plugins'
-import type { ConfigItem } from '../types'
 
 export const react: ConfigItem[] = [
   {

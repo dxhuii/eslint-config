@@ -10,7 +10,14 @@
   "keywords": [
     "eslint-config"
   ],
-  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -18,9 +25,8 @@
     "build": "tsup src/index.ts --format esm,cjs --clean --dts",
     "stub": "tsup src/index.ts --format esm --clean",
     "lint": "pnpm run stub && eslint .",
-    "prepublishOnly": "nr build",
+    "prepublishOnly": "pnpm run build",
     "release": "bumpp && npm publish",
-    "test": "vitest",
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks"
   },
@@ -28,25 +34,25 @@
     "eslint": ">=8.0.0"
   },
   "dependencies": {
-    "@antfu/eslint-define-config": "1.23.0-1",
+    "@antfu/eslint-config": "1.0.0-beta.24",
     "@typescript-eslint/parser": "^6.7.4",
-    "eslint-plugin-antfu": "1.0.0-beta.12",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "1.0.0-beta.22",
-    "@antfu/ni": "^0.21.8",
     "@dxhuii/eslint-config": "workspace:*",
-    "@types/eslint": "^8.44.3",
     "@types/node": "^20.8.3",
     "bumpp": "^9.2.0",
     "eslint": "^8.51.0",
-    "esno": "^0.17.0",
     "lint-staged": "^14.0.1",
-    "rimraf": "^5.0.5",
     "simple-git-hooks": "^2.9.0",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
   }
 }

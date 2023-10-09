@@ -1,12 +1,11 @@
+import type { ConfigItem, OptionsConfig } from '@antfu/eslint-config'
 import { react } from './configs'
 import { combine } from './utils'
-import type { ConfigItem, OptionsConfig } from './types'
-import { OFF } from './flags'
 
 /**
  * Construct an array of ESLint flat config items.
  */
-export function dxhuii(options: OptionsConfig & ConfigItem = {}, ...userConfigs: (ConfigItem | ConfigItem[])[]) {
+export function dxhuii(options: OptionsConfig & { react?: boolean } & ConfigItem = {}, ...userConfigs: (ConfigItem | ConfigItem[])[]) {
   const configs: ConfigItem[][] = []
 
   if (options.react ?? true)
@@ -20,9 +19,9 @@ export function dxhuii(options: OptionsConfig & ConfigItem = {}, ...userConfigs:
       files: ['**/*.vue'],
       rules: {
         'vue/v-on-event-hyphenation': ['error', 'never'], // 事件名不允许使用连字符
-        'vue/valid-attribute-name': OFF, // 属性名不允许使用连字符
+        'vue/valid-attribute-name': 'off', // 属性名不允许使用连字符
         // 关闭组件命名规则
-        'vue/multi-word-component-names': OFF, // 组件名不允许使用连字符
+        'vue/multi-word-component-names': 'off', // 组件名不允许使用连字符
         'vue/custom-event-name-casing': ['error', 'camelCase', { // 事件名不允许使用连字符
           ignores: [
             '/^(click):[a-z]+[a-zA-Z]+$/'
@@ -33,19 +32,19 @@ export function dxhuii(options: OptionsConfig & ConfigItem = {}, ...userConfigs:
     {
       // 所有文件
       rules: {
-        'no-multi-str': OFF, // 允许多行字符串
-        'no-restricted-globals': OFF, // 允许使用全局变量
-        'antfu/no-cjs-exports': OFF, // 允许使用 commonjs 的 exports
-        'node/prefer-global/process': OFF, // 允许使用 process
+        'no-multi-str': 'off', // 允许多行字符串
+        'no-restricted-globals': 'off', // 允许使用全局变量
+        'antfu/no-cjs-exports': 'off', // 允许使用 commonjs 的 exports
+        'node/prefer-global/process': 'off', // 允许使用 process
 
-        'antfu/consistent-list-newline': OFF, // 允许在数组元素之间换行
+        'antfu/consistent-list-newline': 'off', // 允许在数组元素之间换行
 
         'arrow-parens': ['error', 'as-needed'], // 箭头函数参数只有一个时不需要括号
 
-        'import/prefer-default-export': OFF, // 允许使用 export
-        'import/extensions': OFF, // 允许不写文件后缀
+        'import/prefer-default-export': 'off', // 允许使用 export
+        'import/extensions': 'off', // 允许不写文件后缀
 
-        'no-console': OFF, // 允许使用 console
+        'no-console': 'off', // 允许使用 console
 
         // 删除未尾逗号
         'style/comma-dangle': ['error', 'never'],

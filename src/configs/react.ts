@@ -31,6 +31,17 @@ export const react: ConfigItem[] = [
       ...pluginReactHooks.configs.recommended.rules,
 
       // JSX rules https://www.5axxw.com/wiki/content/0u8zli
+      'style/jsx-closing-bracket-location': ['error', 'after-props'],
+      'style/jsx-wrap-multilines': ['error', {
+        declaration: 'parens-new-line',
+        assignment: 'parens-new-line',
+        return: 'parens-new-line',
+        arrow: 'parens-new-line',
+        condition: 'parens-new-line',
+        logical: 'parens-new-line',
+        prop: 'parens-new-line'
+      }],
+
       'react/jsx-boolean-value': ['error', 'never'],
       'react/jsx-closing-tag-location': 'error',
       'react/jsx-curly-brace-presence': 'error',

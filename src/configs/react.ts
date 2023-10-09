@@ -30,6 +30,7 @@ export const react: ConfigItem[] = [
 
       ...pluginReactHooks.configs.recommended.rules,
 
+      'antfu/consistent-list-newline': 'off',
       // JSX rules https://www.5axxw.com/wiki/content/0u8zli
       'style/jsx-closing-bracket-location': ['error', 'after-props'],
       'style/jsx-wrap-multilines': ['error', {

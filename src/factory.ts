@@ -34,7 +34,10 @@ export function dxhuii(options: OptionsConfig & { react?: boolean } & ConfigItem
       rules: {
         'no-multi-str': 'off', // 允许多行字符串
         'no-restricted-globals': 'off', // 允许使用全局变量
+        'antfu/no-cjs-exports': 'off', // 允许使用 commonjs 的 exports
         'node/prefer-global/process': 'off', // 允许使用 process
+
+        'antfu/consistent-list-newline': 'off', // 允许在数组元素之间换行
 
         'arrow-parens': ['error', 'as-needed'], // 箭头函数参数只有一个时不需要括号
 
@@ -46,8 +49,18 @@ export function dxhuii(options: OptionsConfig & { react?: boolean } & ConfigItem
         // 删除未尾逗号
         'style/comma-dangle': ['error', 'never'],
         'jsonc/comma-dangle': ['error', 'never'],
-        // jsx 使用单引号
-        'style/jsx-quotes': ['error', 'prefer-single'],
+
+        'style/jsx-quotes': ['error', 'prefer-single'], // jsx 使用单引号
+        'style/jsx-closing-bracket-location': ['error', 'after-props'],
+        'style/jsx-wrap-multilines': ['error', {
+          declaration: 'parens-new-line',
+          assignment: 'parens-new-line',
+          return: 'parens-new-line',
+          arrow: 'parens-new-line',
+          condition: 'parens-new-line',
+          logical: 'parens-new-line',
+          prop: 'parens-new-line'
+        }],
         // 删除未使用的依赖
         'unused-imports/no-unused-imports': 'error',
         'unused-imports/no-unused-vars': [

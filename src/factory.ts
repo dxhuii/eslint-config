@@ -72,7 +72,7 @@ export function dxhuii(options: OptionsConfig & { react?: boolean } & ConfigItem
             argsIgnorePattern: '^_'
           }
         ]
-      }
+      } as any
     }
   )
 

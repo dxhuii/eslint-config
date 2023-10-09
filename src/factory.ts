@@ -51,6 +51,16 @@ export function dxhuii(options: OptionsConfig & { react?: boolean } & ConfigItem
         'jsonc/comma-dangle': ['error', 'never'],
 
         'style/jsx-quotes': ['error', 'prefer-single'], // jsx 使用单引号
+        'style/jsx-closing-bracket-location': ['error', 'after-props'],
+        'style/jsx-wrap-multilines': ['error', {
+          declaration: 'parens-new-line',
+          assignment: 'parens-new-line',
+          return: 'parens-new-line',
+          arrow: 'parens-new-line',
+          condition: 'parens-new-line',
+          logical: 'parens-new-line',
+          prop: 'parens-new-line'
+        }],
         // 删除未使用的依赖
         'unused-imports/no-unused-imports': 'error',
         'unused-imports/no-unused-vars': [

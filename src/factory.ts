@@ -34,10 +34,7 @@ export function dxhuii(options: OptionsConfig & { react?: boolean } & ConfigItem
       rules: {
         'no-multi-str': 'off', // 允许多行字符串
         'no-restricted-globals': 'off', // 允许使用全局变量
-        'antfu/no-cjs-exports': 'off', // 允许使用 commonjs 的 exports
         'node/prefer-global/process': 'off', // 允许使用 process
-
-        'antfu/consistent-list-newline': 'off', // 允许在数组元素之间换行
 
         'arrow-parens': ['error', 'as-needed'], // 箭头函数参数只有一个时不需要括号
 

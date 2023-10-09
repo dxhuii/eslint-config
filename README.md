@@ -11,9 +11,11 @@
 
   ```js
   // eslint.config.js
-  import dxhuii from '@dxhuii/eslint-config' // 增加了 react 支持
+  // 增加了 react 支持
+  import dxhuii from '@dxhuii/eslint-config'
 
-  import antfu from '@antfu/eslint-config' // 默认不支持 react
+  // 默认不支持 react
+  import antfu from '@antfu/eslint-config'
 
   export default antfu({}, dxhuii())
   ```
@@ -21,4 +23,4 @@
 
 ## 感谢
 - [@antfu/eslint-config](https://github.com/antfu/eslint-config)
-- [eslint-define-config](https://github.com/shinigami92/eslint-define-config)
+- [@antfu/eslint-define-config](https://github.com/antfu/eslint-define-config)

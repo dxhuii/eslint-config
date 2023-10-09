@@ -1,10 +1,20 @@
-import { GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX } from '../globs'
+import { GLOB_JSX, GLOB_TSX } from '../globs'
 import { pluginReact, pluginReactHooks } from '../plugins'
-import type { FlatESLintConfigItem } from '../types'
+import type { ConfigItem } from '../types'
 
-export const react: FlatESLintConfigItem[] = [
+export const react: ConfigItem[] = [
   {
-    files: [GLOB_TSX, GLOB_JS, GLOB_JSX, GLOB_TS],
+    files: [GLOB_TSX, GLOB_JSX],
+    languageOptions: {
+      parserOptions: {
+        ecmaVersion: 'latest',
+        parser: '@typescript-eslint/parser',
+        sourceType: 'module',
+        ecmaFeatures: {
+          jsx: true
+        }
+      }
+    },
     plugins: {
       'react': pluginReact,
       'react-hooks': pluginReactHooks
@@ -15,9 +25,9 @@ export const react: FlatESLintConfigItem[] = [
       }
     },
     rules: {
-      'jsx-quotes': ['error', 'prefer-double'], // jsx 属性值使用双引号
-
       ...pluginReact.configs.recommended.rules,
+      'react/react-in-jsx-scope': 'off',
+
       ...pluginReactHooks.configs.recommended.rules,
 
       // JSX rules https://www.5axxw.com/wiki/content/0u8zli

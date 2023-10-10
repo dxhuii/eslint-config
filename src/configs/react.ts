@@ -15,6 +15,7 @@ export const react: ConfigItem[] = [
         }
       }
     },
+    name: 'dxhuii:react',
     plugins: {
       'react': pluginReact,
       'react-hooks': pluginReactHooks

@@ -1,7 +1,7 @@
 import type { ConfigItem } from '@antfu/eslint-config'
 
 /**
- * Combine array and non-array configs into a single array.
+ * 将阵列和非阵列配置合并为一个阵列。
  */
 export function combine(...configs: (ConfigItem | ConfigItem[])[]): ConfigItem[] {
   return configs.flatMap(config => Array.isArray(config) ? config : [config])

@@ -21,16 +21,8 @@ export const all: ConfigItem[] = [
       'jsonc/comma-dangle': ['error', 'never'],
       'style/comma-dangle': ['error', 'never'],
       'style/jsx-quotes': ['error', 'prefer-single'], // jsx 使用单引号
-      'style/jsx-closing-bracket-location': ['error', 'after-props'],
-      'style/jsx-wrap-multilines': ['error', {
-        declaration: 'parens-new-line',
-        assignment: 'parens-new-line',
-        return: 'parens-new-line',
-        arrow: 'parens-new-line',
-        condition: 'parens-new-line',
-        logical: 'parens-new-line',
-        prop: 'parens-new-line'
-      }],
+      'style/jsx-closing-bracket-location': ['error', 'after-props'], // JSX 多行元素并验证右括号的位置在props之后
+      'style/jsx-one-expression-per-line': 'off', // 取消将 JSX 中的每一行限制为一个表达式。
       // 删除未使用的依赖
       'unused-imports/no-unused-imports': 'error',
       'unused-imports/no-unused-vars': [

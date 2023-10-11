@@ -32,10 +32,7 @@ export const react: ConfigItem[] = [
       ...pluginReactHooks.configs.recommended.rules,
 
       'react/jsx-boolean-value': ['error', 'never'],
-      'react/jsx-closing-tag-location': 'error',
-      'react/jsx-curly-brace-presence': 'error',
       'react/jsx-filename-extension': ['error', { extensions: ['.tsx', '.jsx'] }],
-      'react/jsx-max-props-per-line': [1, { when: 'multiline' }],
       'react/jsx-no-comment-textnodes': 'error',
       'react/jsx-no-duplicate-props': 'error',
       'react/jsx-no-leaked-render': 'error',

@@ -6,6 +6,7 @@ export const all: ConfigItem[] = [
     rules: {
       'antfu/no-cjs-exports': 'off', // 允许使用 commonjs 的 exports
       'antfu/consistent-list-newline': 'off', // 允许在数组元素之间换行
+      'antfu/prefer-inline-type-import': 'off', // disable
       'arrow-parens': ['error', 'as-needed'], // 箭头函数参数只有一个时不需要括号
 
       'import/prefer-default-export': 'off', // 允许使用 export

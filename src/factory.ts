@@ -1,5 +1,5 @@
 import type { ConfigItem, OptionsConfig } from '@antfu/eslint-config'
-import { all, react, vue } from './configs'
+import { all, react } from './configs'
 import { combine } from './utils'
 
 interface CustomConfig { react?: boolean; all?: boolean }
@@ -12,9 +12,6 @@ export function dxhuii(options: OptionsConfig & CustomConfig & ConfigItem = {}, 
 
   if (options.react ?? true)
     configs.push(react)
-
-  if (options.vue ?? true)
-    configs.push(vue)
 
   if (options.all ?? true)
     configs.push(all)

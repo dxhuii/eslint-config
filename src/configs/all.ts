@@ -1,6 +1,6 @@
-import type { ConfigItem } from '@antfu/eslint-config'
+import type { FlatConfigItem } from '@antfu/eslint-config'
 
-export const all: ConfigItem[] = [
+export const all: FlatConfigItem[] = [
   {
     name: 'dxhuii:all',
     rules: {

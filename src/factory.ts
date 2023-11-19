@@ -1,14 +1,14 @@
-import type { ConfigItem, OptionsConfig } from '@antfu/eslint-config'
+import type { FlatConfigItem, OptionsConfig } from '@antfu/eslint-config'
 import { all, react } from './configs'
 import { combine } from './utils'
 
-interface CustomConfig { react?: boolean; all?: boolean }
+interface CustomConfig { react?: boolean, all?: boolean }
 
 /**
  * 构建一个 ESLint 平面配置项数组。
  */
-export function dxhuii(options: OptionsConfig & CustomConfig & ConfigItem = {}, ...userConfigs: (ConfigItem | ConfigItem[])[]) {
-  const configs: ConfigItem[][] = []
+export function dxhuii(options: OptionsConfig & CustomConfig & FlatConfigItem = {}, ...userConfigs: (FlatConfigItem | FlatConfigItem[])[]) {
+  const configs: FlatConfigItem[][] = []
 
   if (options.react ?? true)
     configs.push(react)

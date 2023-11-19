@@ -2,7 +2,7 @@
   "name": "@dxhuii/eslint-config",
   "type": "module",
   "version": "1.0.18",
-  "packageManager": "pnpm@8.8.0",
+  "packageManager": "pnpm@8.10.5",
   "description": "Dxhuii's ESLint config",
   "author": "Dxhuii <dxhuii@hotmail.com> (https://github.com/dxhuii)",
   "license": "MIT",
@@ -23,7 +23,7 @@
   ],
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --clean --dts",
-    "stub": "tsup src/index.ts --format esm --clean",
+    "stub": "tsup src/index.ts --format esm,cjs --clean",
     "lint": "pnpm run stub && eslint .",
     "prepublishOnly": "pnpm run build",
     "release": "bumpp && npm publish",
@@ -38,16 +38,16 @@
     "eslint-plugin-react-hooks": "^4.6.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "1.1.0",
+    "@antfu/eslint-config": "^2.0.0",
     "@dxhuii/eslint-config": "workspace:*",
-    "@types/eslint": "^8.44.6",
-    "@types/node": "^20.8.10",
-    "@typescript-eslint/parser": "^6.9.1",
+    "@types/eslint": "^8.44.7",
+    "@types/node": "^20.9.2",
+    "@typescript-eslint/parser": "^6.11.0",
     "bumpp": "^9.2.0",
-    "eslint": "^8.52.0",
-    "lint-staged": "^15.0.2",
+    "eslint": "^8.54.0",
+    "lint-staged": "^15.1.0",
     "simple-git-hooks": "^2.9.0",
-    "tsup": "^7.2.0",
+    "tsup": "^8.0.0",
     "typescript": "^5.2.2"
   },
   "simple-git-hooks": {

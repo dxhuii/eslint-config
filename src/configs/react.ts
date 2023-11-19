@@ -1,8 +1,8 @@
-import type { ConfigItem } from '@antfu/eslint-config'
+import type { FlatConfigItem } from '@antfu/eslint-config'
 import { GLOB_JSX, GLOB_TSX } from '../globs'
 import { pluginReact, pluginReactHooks } from '../plugins'
 
-export const react: ConfigItem[] = [
+export const react: FlatConfigItem[] = [
   {
     files: [GLOB_TSX, GLOB_JSX],
     languageOptions: {

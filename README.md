@@ -17,7 +17,7 @@
   // 默认不支持 react
   import antfu from '@antfu/eslint-config'
 
-  export default antfu({}, dxhuii())
+  export default await antfu({}, await dxhuii())
   ```
   - 其他使用方法和 [@antfu/eslint-config](https://github.com/antfu/eslint-config#readme) 一样
 

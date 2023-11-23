@@ -2,7 +2,7 @@ import type { Awaitable, FlatConfigItem, OptionsConfig, UserConfigItem } from '@
 import { all, react } from './configs'
 import { combine } from './utils'
 
-interface CustomConfig { react?: boolean, all?: boolean }
+interface CustomConfig { all?: boolean }
 
 /**
  * 构建一个 ESLint 平面配置项数组。

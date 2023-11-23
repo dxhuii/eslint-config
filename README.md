@@ -17,7 +17,7 @@
   // 默认不支持 react， 开启需要传入 react: true
   import antfu from '@antfu/eslint-config'
 
-  export default antfu({}, dxhuii())
+  export default await antfu({}, await dxhuii())
   ```
   - 其他使用方法和 [@antfu/eslint-config](https://github.com/antfu/eslint-config#readme) 一样
   - 开启支持react方法 [#react](https://github.com/antfu/eslint-config#react)

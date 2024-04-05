@@ -1,11 +1,11 @@
-import type { FlatConfigItem } from '@antfu/eslint-config'
+import type { TypedFlatConfigItem } from '@antfu/eslint-config'
 import { GLOB_JSX, GLOB_TSX } from '../globs'
 
-export async function react(): Promise<FlatConfigItem[]> {
+export async function react(): Promise<TypedFlatConfigItem[]> {
   return [
     {
       files: [GLOB_TSX, GLOB_JSX],
-      name: 'dxhuii:react',
+      name: 'dxhuii/react',
       rules: {
         // react相关
         'react/jsx-boolean-value': ['error', 'never'],

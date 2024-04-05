@@ -1,4 +1,6 @@
-import type { Awaitable, FlatConfigItem, OptionsConfig, UserConfigItem } from '@antfu/eslint-config'
+import type { Awaitable, OptionsConfig, TypedFlatConfigItem } from '@antfu/eslint-config'
+import type { FlatConfigComposer } from 'eslint-flat-config-utils'
+import type { Linter } from 'eslint'
 import { all, react } from './configs'
 import { combine } from './utils'
 
@@ -8,10 +10,10 @@ interface CustomConfig { all?: boolean }
  * 构建一个 ESLint 平面配置项数组。
  */
 export async function dxhuii(
-  options: OptionsConfig & CustomConfig & FlatConfigItem = {},
-  ...userConfigs: (UserConfigItem | UserConfigItem[])[]
-): Promise<UserConfigItem[]> {
-  const configs: Awaitable<FlatConfigItem[]>[] = []
+  options: OptionsConfig & TypedFlatConfigItem & CustomConfig = {},
+  ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any> | Linter.FlatConfig[]>[]
+): Promise<TypedFlatConfigItem[]> {
+  const configs: Awaitable<TypedFlatConfigItem[]>[] = []
 
   if (options.react ?? true)
     configs.push(react())

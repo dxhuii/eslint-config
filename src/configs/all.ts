@@ -1,9 +1,9 @@
-import type { FlatConfigItem } from '@antfu/eslint-config'
+import type { TypedFlatConfigItem } from '@antfu/eslint-config'
 
-export async function all(): Promise<FlatConfigItem[]> {
+export async function all(): Promise<TypedFlatConfigItem[]> {
   return [
     {
-      name: 'dxhuii:all',
+      name: 'dxhuii/all',
       rules: {
         'antfu/no-cjs-exports': 'off', // 允许使用 commonjs 的 exports
         'antfu/consistent-list-newline': 'off', // 允许在数组元素之间换行

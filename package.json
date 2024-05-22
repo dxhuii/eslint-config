@@ -1,7 +1,7 @@
 {
   "name": "@dxhuii/eslint-config",
   "type": "module",
-  "version": "2.1.5",
+  "version": "2.2.0",
   "packageManager": "pnpm@9.1.0",
   "description": "Dxhuii's ESLint config",
   "author": "Dxhuii <dxhuii@hotmail.com> (https://github.com/dxhuii)",

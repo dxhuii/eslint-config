@@ -1,2 +1,2 @@
-export * from './react'
+export * from './ignores'
 export * from './all'

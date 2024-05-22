@@ -25,6 +25,8 @@ export async function all(): Promise<TypedFlatConfigItem[]> {
         'style/jsx-closing-bracket-location': ['error', 'after-props'], // JSX 多行元素并验证右括号的位置在props之后
         'style/jsx-one-expression-per-line': 'off', // 取消将 JSX 中的每一行限制为一个表达式。
         'style/arrow-parens': ['error', 'as-needed'], // 箭头函数参数只有一个时不需要括号
+        'style/jsx-pascal-case': 'error', // jsx 使用驼峰命名
+        'style/jsx-props-no-multi-spaces': 'error', // jsx 属性不允许多个空格
         // 删除未使用的依赖
         'unused-imports/no-unused-imports': 'error',
         'unused-imports/no-unused-vars': [

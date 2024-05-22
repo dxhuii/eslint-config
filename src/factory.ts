@@ -1,7 +1,7 @@
 import type { Awaitable, OptionsConfig, TypedFlatConfigItem } from '@antfu/eslint-config'
 import type { FlatConfigComposer } from 'eslint-flat-config-utils'
 import type { Linter } from 'eslint'
-import { all, react } from './configs'
+import { all, ignores } from './configs'
 import { combine } from './utils'
 
 interface CustomConfig { all?: boolean }
@@ -15,8 +15,8 @@ export async function dxhuii(
 ): Promise<TypedFlatConfigItem[]> {
   const configs: Awaitable<TypedFlatConfigItem[]>[] = []
 
-  if (options.react ?? true)
-    configs.push(react())
+  if (options.ignores ?? true)
+    configs.push(ignores())
 
   if (options.all ?? true)
     configs.push(all())
